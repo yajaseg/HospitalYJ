@@ -14,31 +14,31 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1>Products</h1>
-                <a class="text-right" href="/admin/hospitals/create">Create New Hospital</a>
+                <h1>Doctors</h1>
+                <a class="text-right" href="/admin/doctors/create">Create New Doctor</a>
             </div>
             <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>
                         <tr class="bg-warning">
                             <th scope="col">#</th>
-                            <th scope="col">Hospital Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Phone_Number</th>
+                            <th scope="col">Doctor Name</th>
+                            <th scope="col">Speciality</th>
+                            <th scope="col">MobileNumber</th>
                             <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($hospitals as $hosp)
+                        @foreach($doctors as $doct)
                             <tr>
                                 <th class="table-dark" scope="row">{{ $loop->index + 1 }}</th>
-                                <td>{{ $hosp["Name"] }}</td>
-                                <td>{{ $hosp["Address"] }}</td>
-                                <td>{{ $hosp["Phone_Number"]}}</td>
+                                <td>{{ $doct["DoctorName"] }}</td>
+                                <td>{{ $doct["Speciality"] }}</td>
+                                <td>{{ $doct["MobileNumber"]}}</td>
                                 <td class="table-dark">
-                                    <a href="/admin/hospitals/details/{{ $hosp['_id'] }}">Details</a> |
-                                    <a href="/admin/hospitals/edit/{{ $hosp->_id }}">Edit</a> |
-                                    <a href="/admin/hospitals/delete/{{ $hosp->_id }}">Delete</a>
+                                    <a href="/admin/doctors/details/{{ $doct['_id'] }}">Details</a> |
+                                    <a href="/admin/doctors/edit/{{ $doct->_id }}">Edit</a> |
+                                    <a href="/admin/doctors/delete/{{ $doct->_id }}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

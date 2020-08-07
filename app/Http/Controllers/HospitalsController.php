@@ -10,31 +10,44 @@ class HospitalsController extends Controller
     public function Index(){
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
         $hospitals = $collection->find();
-        return view('Admin.Hospitals.index', [ "hospitals" => $hospitals ]);
+        return view('Admin.Hospitals.index', [ "hospitals" => $hospitals]);
     }
 
     public function Create() { 
-        $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = $collection->find();
-        return view('Admin.Hospitals.create', ["doctors" => $doctors ]);  
+        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+        $hospital = $collection->find();
+        return view('Admin.Hospitals.Create', ["hospital" => $hospital ]);  
     }
     
+    public function Hospital() {
+        $hospital = [
+            "Name" => request("Name"),
+            "Address" => request("Address"),
+            "Phone_Number" => request("Phone_Number"),
+            "DoctorName" =>request("DoctorName")
+           
+        ];
+        $collection = (new MongoDB\Client)->fiveCStore->Hospitals;
+        $insertOneResult = $collection->insertOne($hospital);
+        if ($insertOneResult->getInsertedCount() == 1) 
+            return redirect('/admin/hospitals')->with('mssg', request('Name')." was added succesfuly.")->with('alerttype', "success");
+            
+    }
+
     public function Edit($id) { 
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-       
-        $hospitals =  $collection->find();
-        $product = $collection->findOne(["_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Hospitals.edit', ["hospitals" => $hospitals]);
+        $hospital = $collection->findOne(["_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Hospitals.edit', ["hospital" => $hospital]);
     }
     
     public function Update(){
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $product = [
+        $hospital = [
             
             "Name" => request("Name"),
             "Address" => request("Address"),
             "Phone_Number" => request("Phone_Number"),
-            
+            "DoctorName" =>request("DoctorName")
         ];
         $updateOneResult = $collection->updateOne([
             "_id" => new MongoDB\BSON\ObjectId(request("hospitalid"))
@@ -47,32 +60,33 @@ class HospitalsController extends Controller
 
     public function ProductDetails($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $product = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
-        return view("Hospitals.Details", ["product" => $product]);
+        $hospital = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view('Hospitals.Details', ["hospital" => $hospital]);
     }
 
     public function Show($id) { //Details
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
         $hospital = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Hospitals.details', [ "hospital" => $hospital ]);
+        return view('Admin.Hospitals.details', [ "hospital" => $hospital]);
     }
 
     public function Delete($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $collectionC = (new MongoDB\Client)->FiveCStore->Categories;
-        $categories = $collectionC->find();
-        $product = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Hospitals.delete', [ "product" => $product, "categories" => $categories ]);
+        $hospital = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Hospitals.delete', [ "hospital" => $hospital]);
     }
 
     public function Remove() {
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $productname = request('product_name');
-        $deletOneResult = $collection->deleteOne([
-            "_id" => new \MongoDB\BSON\ObjectId(request("productid"))
+        $Name = request('Name');
+        $deleteOneResult = $collection->deleteOne([
+            "_id" => new \MongoDB\BSON\ObjectId(request("hospitalid"))
         ]);
 
-        if($deletOneResult->getDeletedCount() == 1)
-            return redirect("/admin/hospitals")->with("mssg", $productname." was deleted succesfuly.")->with("alerttype", "success");
+            return redirect('/admin/hospitals/');
+            // ->with("mssg", $Name." was deleted succesfuly.")->with("alerttype", "success");
     }
+
+
+    
 }

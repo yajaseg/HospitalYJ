@@ -4,6 +4,5 @@
 @endsection
 @section('content')
 <h1>Hospitals</h1>
-    <p>Lorem, ipsm dolor sit amet consectetur adipisicing elit. Vero doloribus commodi, quidem
-    a </p>
+    
 @endsection

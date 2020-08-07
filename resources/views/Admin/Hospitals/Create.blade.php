@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,6 +6,8 @@
       <div class="row">
          <div class="col-md-12">
             <h1>Create New Hospital</h1>
+             <form action="/admin/hospitals/create" method="POST">
+                @csrf
             <form>
                <div class="form-group">
                   <label for="Name">Hospital Name</label>
@@ -21,15 +24,14 @@
                         <input type="tel" class="form-control" id="Phone Number name="Phone Number">
                   </div>
                   <div class="form-group col-md-6">
-                        <label for="Doctor Name">Doctor Name</label>
-                        <select name="Doctor Name" id="Doctor Name" class="form-control">
-                           <option value="0">Select a doctor...</option>
-                           <option value="5f0680bb30496c33b80bae00">Dr.J.Laxman</option>
+                        <label for="DoctorName">Doctor Name</label>
+                        <input type="text" class="form-control" id="DoctorName" name="DoctorName">
                         </select>
                   </div>
                </div> 
-               
-                <button type="submit" class="btn btn-primary">Create</button>
+              
+               <a href="/admin/hospitals/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cancel</a>
+                    <button type="submit" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Create</>
             </form>
          </div>
       </div>

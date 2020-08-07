@@ -24,6 +24,11 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/hospitals">Hospitals </a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/hospitals">AdminHospitals </a>
+
       </li>
     </ul>
   </div>

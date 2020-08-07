@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Hospital YJ') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="" class="nav-link">Hospitals</a>
+                            <a href="/admin/hospitals" class="nav-link">Hospitals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/doctors" class="nav-link">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/drugs" class="nav-link">Drugs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/patients" class="nav-link">Patients</a>
                         </li>
                     </ul>
 
