@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ route('ProductStore') }}" class="nav-link">Products</a>
+                            <a href="" class="nav-link">Hospitals</a>
                         </li>
                     </ul>
 

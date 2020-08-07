@@ -25,9 +25,20 @@ Route::get('/contactus', function () {
     return view('contactus');
 });
 
-Route::get('/hospitals', function () {
-    return view('hospitals');
-});
+
+Route::get('/admin/hospitals', 'HospitalsController@Index');
+
+
+Route::get('/admin/hospitals/create', 'HospitalsController@Create');
+
+Route::get('/admin/hospitals/edit/{id}', 'HospitalsController@Edit');
+
+Route::post('/admin/hospitals/edit', 'HospitalsController@Update');
+
+Route::get('/admin/hospitals/delete/{id}', 'HospitalsController@Delete');
+
+Route::get('/admin/hospitals/details/{id}', 'HospitalsController@Show');
+
 
 Route::get('/mongodb', function (){
     return view('mongodb');
