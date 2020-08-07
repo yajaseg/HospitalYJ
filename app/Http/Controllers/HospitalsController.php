@@ -53,8 +53,8 @@ class HospitalsController extends Controller
 
     public function Show($id) { //Details
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $product = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Hospitals.details', [ "product" => $product ]);
+        $hospital = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Hospitals.details', [ "hospital" => $hospital ]);
     }
 
     public function Delete($id) {
