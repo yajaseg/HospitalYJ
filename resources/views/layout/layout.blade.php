@@ -16,11 +16,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/aboutus">About us <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contactus">Contact us</a>
+    <li class="nav-item">
+        <a class="nav-link" href="/hospitals/index">Hospitals </a>
+
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/hospitals">Hospitals </a>

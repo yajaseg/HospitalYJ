@@ -82,6 +82,7 @@ Route::delete('/admin/drugs/delete', 'DrugsController@Remove');
 Route::get('/admin/drugs/details/{id}', 'DrugsController@Show');
 
 
+Route::get('/hospitals/index', 'HomeController@index');
 Route::get('/mongodb', function (){
     return view('mongodb');
 });

@@ -5,9 +5,8 @@
         <div class="row">
             <div class="card col-md-12">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->product_name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${{ $product->price." ".$product->currency}}</h6>
-                    <p class="card-text">{{ $product->description }}</p>
+                    <h5 class="card-title">{{ $hospital->Name }}</h5>
+                    
                 </div>
                 <div id="starRating" class="card-footer">
                     <p>Rating: </p>

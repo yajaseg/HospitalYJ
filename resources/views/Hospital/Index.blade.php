@@ -13,7 +13,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $hospital->Name }}</h5>
                                 <h5 class="card-title">{{ $hospital->Name }}</h5>
-                                <a href="/products/{{ $hospital->_id }}" class="btn btn-primary">View</a>
+                                <a href="/hospitals/details/{{ $hospital->_id }}" class="btn btn-primary">View</a>
                             </div>
                         </div>
                     @endforeach
@@ -24,11 +24,11 @@
                                 @php
                                     $cpage = request('pg') == 0 ? 1 : request('pg');
                                 @endphp
-                                <a href="/products?pg={{$cpage - 1}}" class="btn btn-secondary {{ $cpage == 1 ? 'disabled' : '' }}">&lt</a>
+                                <a href="/hospitals?pg={{$cpage - 1}}" class="btn btn-secondary {{ $cpage == 1 ? 'disabled' : '' }}">&lt</a>
                                 @for ($i = 1; $i <= ceil($productCount/12); $i++)
-                                <a href="/products?pg={{$i}}" class="btn btn-secondary {{ $cpage == $i ? 'disabled' : '' }}">{{$i}}</a>
+                                <a href="/hospitals?pg={{$i}}" class="btn btn-secondary {{ $cpage == $i ? 'disabled' : '' }}">{{$i}}</a>
                                 @endfor
-                                <a href="/products?pg={{$cpage + 1}}" class="btn btn-secondary  {{ $cpage == ceil($productCount/12) ? 'disabled' : '' }}">&gt</a>
+                                <a href="/hospitals?pg={{$cpage + 1}}" class="btn btn-secondary  {{ $cpage == ceil($productCount/12) ? 'disabled' : '' }}">&gt</a>
                             </div>
                         </div>
                     </div>
