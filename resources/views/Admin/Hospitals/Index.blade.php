@@ -24,7 +24,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Hospital Name</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Phone_Number</th>
+                            <th scope="col">Phone Number</th>
                             <th scope="col">Options</th>
                         </tr>
                     </thead>
@@ -34,7 +34,7 @@
                                 <th class="table-dark" scope="row">{{ $loop->index + 1 }}</th>
                                 <td>{{ $hosp["Name"] }}</td>
                                 <td>{{ $hosp["Address"] }}</td>
-                                <td>{{ $hosp["Phone_Number"]}}</td>
+                                <td>{{ $hosp["PhoneNumber"]}}</td>
                                 <td class="table-dark">
                                     <a href="/admin/hospitals/details/{{ $hosp['_id'] }}">Details</a> |
                                     <a href="/admin/hospitals/edit/{{ $hosp->_id }}">Edit</a> |

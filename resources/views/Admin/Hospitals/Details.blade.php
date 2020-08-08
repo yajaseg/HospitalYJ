@@ -16,7 +16,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <b>Phone Number: {{ $hospital->Phone_Number }} </b>
+                            <b>Phone Number: {{ $hospital->PhoneNumber }} </b>
                         </li>
                         <li class="list-group-item "><b>Doctor: {{ $hospital->DoctorName}}</b></li>
                     </ul>

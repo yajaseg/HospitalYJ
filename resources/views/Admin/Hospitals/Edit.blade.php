@@ -20,11 +20,11 @@
                </div>  
                <div class="row">
                   <div class="form-group col-md-6">
-                        <label for="Phone Number">Phone Number</label>
-                        <input type="tel" class="form-control" id="Phone Number" name="Phone Number" value="{{ $hospital->Phone_Number }}" >
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" value="{{ $hospital->PhoneNumber }}" >
                   </div>
                   <div class="form-group col-md-6">
-                        <label for="Doctor Name">Doctor Name</label>
+                        <label for="DoctorName">Doctor Name</label>
                         <input type="text" class="form-control" id="DoctorName" name="DoctorName" value="{{ $hospital->DoctorName}}">
                   </div>
                </div> 

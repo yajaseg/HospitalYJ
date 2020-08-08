@@ -31,21 +31,21 @@ Route::get('/hospitals', function () {
 
 //Admin
 
-Route::get('/admin/hospitals', 'HospitalsController@Index');
+Route::GET('/admin/hospitals', 'HospitalsController@Index');
 
-Route::get('/admin/hospitals/create', 'HospitalsController@Create');
+Route::GET('/admin/hospitals/create', 'HospitalsController@Create');
 
-Route::post('/admin/hospitals/create', 'HospitalsController@Hospital');
+Route::POST('/admin/hospitals/create', 'HospitalsController@Hospital');
 
-Route::get('/admin/hospitals/edit/{id}', 'HospitalsController@Edit');
+Route::GET('/admin/hospitals/edit/{id}', 'HospitalsController@Edit');
 
-Route::post('/admin/hospitals/edit', 'HospitalsController@Update');
+Route::POST('/admin/hospitals/edit', 'HospitalsController@Update');
 
-Route::get('/admin/hospitals/delete/{id}', 'HospitalsController@Delete');
+Route::GET('/admin/hospitals/delete/{id}', 'HospitalsController@Delete');
 
-Route::delete('/admin/hospitals/delete', 'HospitalsController@Remove');
+Route::DELETE('/admin/hospitals/delete', 'HospitalsController@Remove');
 
-Route::get('/admin/hospitals/details/{id}', 'HospitalsController@Show');
+Route::GET('/admin/hospitals/details/{id}', 'HospitalsController@Show');
 
 //Admin Doctors
 Route::get('/admin/doctors', 'DoctorsController@Index');

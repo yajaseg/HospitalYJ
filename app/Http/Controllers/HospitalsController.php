@@ -23,7 +23,7 @@ class HospitalsController extends Controller
         $hospital = [
             "Name" => request("Name"),
             "Address" => request("Address"),
-            "Phone_Number" => request("Phone_Number"),
+            "PhoneNumber" => request("PhoneNumber"),
             "DoctorName" =>request("DoctorName")
            
         ];
@@ -46,7 +46,7 @@ class HospitalsController extends Controller
             
             "Name" => request("Name"),
             "Address" => request("Address"),
-            "Phone_Number" => request("Phone_Number"),
+            "PhoneNumber" => request("PhoneNumber"),
             "DoctorName" =>request("DoctorName")
         ];
         $updateOneResult = $collection->updateOne([
@@ -54,8 +54,8 @@ class HospitalsController extends Controller
         ],[
             '$set' => $hospital
         ]);
-        if($updateOneResult->getModifiedCount()==1)
-        return redirect("/admin/hospitals/".request("hospitalid"))->with('mssg', "Updated succesfuly")->with("alerttype", "success");
+       
+        return redirect('/admin/hospitals/');
     }
 
     public function ProductDetails($id) {

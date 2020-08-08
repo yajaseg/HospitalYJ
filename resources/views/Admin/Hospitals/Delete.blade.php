@@ -20,8 +20,8 @@
                </div>  
                <div class="row">
                   <div class="form-group col-md-6">
-                        <label for="Phone_Number">Phone Number</label>
-                        <input type="tel" class="form-control" id="Phone_Number" name="Phone_Number" value="{{ $hospital->Phone_Number }}" disabled>
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" value="{{ $hospital->PhoneNumber }}" disabled>
                   </div>
                   <div class="form-group col-md-6">
                         <label for="DoctorName">Doctor Name</label>
