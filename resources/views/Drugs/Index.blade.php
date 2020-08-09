@@ -11,8 +11,8 @@
                         <div class="card col-md-3">
                           
                             <div class="card-body">
-                                <h5 class="card-title">{{ $drugs->TradeName }}</h5>
-                                <h5 class="card-title">{{ $drugs->Price }}</h5>
+                                <h5 class="card-title">Trade Name: {{ $drugs->TradeName }}</h5>
+                               
                                
                                 <a href="/drugs/{{ $drugs->_id }}" class="btn btn-primary">View</a>
                             </div>

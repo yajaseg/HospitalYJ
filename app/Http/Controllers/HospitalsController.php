@@ -60,7 +60,8 @@ class HospitalsController extends Controller
             "Name" => request("Name"),
             "Address" => request("Address"),
             "PhoneNumber" => request("PhoneNumber"),
-            "DoctorName" =>request("DoctorName")
+            "DoctorName" =>request("DoctorName"),
+            "rating" => []
            
         ];
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
@@ -83,7 +84,8 @@ class HospitalsController extends Controller
             "Name" => request("Name"),
             "Address" => request("Address"),
             "PhoneNumber" => request("PhoneNumber"),
-            "DoctorName" =>request("DoctorName")
+            "DoctorName" =>request("DoctorName"),
+            "rating" => []
         ];
         $updateOneResult = $collection->updateOne([
             "_id" => new MongoDB\BSON\ObjectId(request("hospitalid"))

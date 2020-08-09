@@ -18,7 +18,7 @@ class PatientsController extends Controller
 
 
     public function PatientDetails($id) {
-        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+        $collection = (new MongoDB\Client)->HospitalYJ->Patients;
         $patients = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
         return view("Patients.Details", ["patients" => $patients]);
     }

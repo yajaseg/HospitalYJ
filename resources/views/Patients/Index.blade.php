@@ -11,9 +11,8 @@
                         <div class="card col-md-3">
                           
                             <div class="card-body">
-                                <h5 class="card-title">{{ $patients->Name }}</h5>
-                                <h5 class="card-title">{{ $patients->Age }}</h5>
-                                <h5 class="card-title">{{ $patients->Address }}</h5>
+                                <h5 class="card-title">Patient: {{ $patients->Name }}</h5>
+                              
                                
                                 <a href="/patients/{{ $patients->_id }}" class="btn btn-primary">View</a>
                             </div>
