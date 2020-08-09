@@ -4,11 +4,11 @@
 <div class="container">
       <div class="row">
          <div class="col-md-12">
-            <h1>Delete Doctor</h1>
+            <h1>Delete Drug</h1>
             <form action="/admin/drugs/delete" method="POST">
                     @csrf
                     @method("DELETE")
-               <input type="hidden" name="drugid" id="{{ $drugs->_id}}">
+               <input type="hidden" name="drugid" id="drugid" value="{{ $drugs->_id}}">
                <div class="form-group">
                   <label for="TradeName">Trade Name</label>
                   <input type="text" class="form-control" id="TradeName" name="TradeName" value="{{ $drugs->TradeName }}" disabled>

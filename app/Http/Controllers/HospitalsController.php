@@ -7,6 +7,42 @@ use MongoDB;
 
 class HospitalsController extends Controller
 {
+    public function IndexHospital() {
+        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+        $hospitalCount = $collection->count();
+        $page = request("pg") == 0 ? 1 : request("pg");
+        $hospitals = $collection->find([], [ "limit" => 12, "skip" => ($page - 1) * 12 ]);
+        return view('Hospital.Index', [ "hospitals" => $hospitals, "hospitalCount" => $hospitalCount ]);
+    }
+
+
+    public function HospitalDetails($id) {
+        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+        $hospitals = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view("Hospital.Details", ["hospitals" => $hospitals]);
+    }
+    // public function AddComment() {
+    //     $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+    //     $comment = [
+    //         "comment" => request('comment'),
+    //         "date" => date("Y-m-d H:i:s")            ];
+    //     $hospitals = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId(request('hospitalsid')) ]);
+    //     $Comments = $movies->Comments;
+    //     if (count($Comments) == 0 || $Comments == null || empty($Comments)) {
+    //         $Comments = [$comment];
+    //     } else {
+    //         $Comments = [$comment, ...$Comments];
+    //     }
+    //     $updateOneResult = $collection->updateOne([
+    //         "_id" => new MongoDB\BSON\ObjectId(request('hospitalsid'))
+    //     ],[
+    //         '$set' => [ 'Comments' => $Comments ]
+    //     ]);
+
+    //     return redirect("/movies/".request('moviesid'));
+    // }
+
+
     public function Index(){
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
         $hospitals = $collection->find();
@@ -27,7 +63,7 @@ class HospitalsController extends Controller
             "DoctorName" =>request("DoctorName")
            
         ];
-        $collection = (new MongoDB\Client)->fiveCStore->Hospitals;
+        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
         $insertOneResult = $collection->insertOne($hospital);
         if ($insertOneResult->getInsertedCount() == 1) 
             return redirect('/admin/hospitals')->with('mssg', request('Name')." was added succesfuly.")->with('alerttype', "success");
@@ -36,7 +72,7 @@ class HospitalsController extends Controller
 
     public function Edit($id) { 
         $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $hospital = $collection->findOne(["_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        $hospital = $collection->findOne(["_id" => new MongoDB\BSON\ObjectId($id) ]);
         return view('Admin.Hospitals.edit', ["hospital" => $hospital]);
     }
     

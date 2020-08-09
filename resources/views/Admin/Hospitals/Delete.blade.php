@@ -8,7 +8,7 @@
             <form action="/admin/hospitals/delete" method="POST">
                     @csrf
                     @method("DELETE")
-               <input type="hidden" name="hospitalid" id="{{ $hospital->_id}}">
+               <input type="hidden" name="hospitalid" id="hospitalid" value="{{ $hospital->_id}}">
                <div class="form-group">
                   <label for="Name">Hospital Name</label>
                   <input type="text" class="form-control" id="Name" name="Name" value="{{ $hospital->Name }}" disabled>
@@ -16,7 +16,7 @@
                <div class="form-group">
                      <label for="Address"> Address</label>
                      <br>
-                     <textarea class="form-control" name="Address" id="Address" cols="30" rows="10" value="{{ $hospital->Address }}" disabled></textarea>
+                     <input type="text" class="form-control" id="Address" name="Address" value="{{ $hospital->Address }}" disabled>
                </div>  
                <div class="row">
                   <div class="form-group col-md-6">

@@ -7,6 +7,21 @@ use MongoDB;
 
 class DoctorsController extends Controller
 {
+    public function IndexDoctor() {
+        $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
+        $doctorCount = $collection->count();
+        $page = request("pg") == 0 ? 1 : request("pg");
+        $doctors = $collection->find([], [ "limit" => 12, "skip" => ($page - 1) * 12 ]);
+        return view('Doctors.Index', [ "doctors" => $doctors, "doctorCount" => $doctorCount ]);
+    }
+
+
+    public function DoctorDetails($id) {
+        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+        $doctors = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view("Doctors.Details", ["doctors" => $doctors]);
+    }
+
     public function Index(){
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
         $doctors = $collection->find();
@@ -15,12 +30,12 @@ class DoctorsController extends Controller
 
     public function Create() { 
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = $collection->find();
-        return view('Admin.Doctors.Create', ["doctors" => $doctors ]);  
+        $doctor = $collection->find();
+        return view('Admin.Doctors.Create', ["doctor" => $doctor ]);  
     }
     
     public function Doctor() {
-        $doctors = [
+        $doctor = [
             "DoctorName" => request("DoctorName"),
             "Speciality" => request("Speciality"),
             "MobileNumber" => request("MobileNumber"),
@@ -28,21 +43,21 @@ class DoctorsController extends Controller
            
         ];
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $insertOneResult = $collection->insertOne($doctors);
+        $insertOneResult = $collection->insertOne($doctor);
         if ($insertOneResult->getInsertedCount() == 1) 
             return redirect('/admin/doctors')->with('mssg', request('DoctorName')." was added succesfuly.")->with('alerttype', "success");
             
     }
 
     public function Edit($id) { 
-        $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
-        $doctors = $collection->findOne(["_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Doctors.edit', ["doctors" => $doctors]);
+        $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
+        $doctor = $collection->findOne(["_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Doctors.edit', ["doctor" => $doctor]);
     }
     
     public function Update(){
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = [
+        $doctor = [
             "DoctorName" => request("DoctorName"),
             "Speciality" => request("Speciality"),
             "MobileNumber" => request("MobileNumber")
@@ -50,28 +65,28 @@ class DoctorsController extends Controller
         $updateOneResult = $collection->updateOne([
             "_id" => new MongoDB\BSON\ObjectId(request("doctorid"))
         ],[
-            '$set' => $doctors
+            '$set' => $doctor
         ]);
-        if($updateOneResult->getModifiedCount()==1)
-        return redirect("/admin/doctors/".request("doctorid"))->with('mssg', "Updated succesfuly")->with("alerttype", "success");
+        
+        return redirect('/admin/doctors/');
     }
 
     public function ProductDetails($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
-        return view('Doctors.Details', ["doctors" => $doctors]);
+        $doctor = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view('Doctors.Details', ["doctor" => $doctor]);
     }
 
     public function Show($id) { //Details
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Doctors.details', [ "doctors" => $doctors]);
+        $doctor = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Doctors.details', [ "doctor" => $doctor]);
     }
 
     public function Delete($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Doctors;
-        $doctors = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
-        return view('Admin.Doctors.delete', [ "doctors" => $doctors]);
+        $doctor = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view('Admin.Doctors.delete', [ "doctor" => $doctor]);
     }
 
     public function Remove() {
@@ -80,8 +95,7 @@ class DoctorsController extends Controller
         $deleteOneResult = $collection->deleteOne([
             "_id" => new \MongoDB\BSON\ObjectId(request("doctorid"))
         ]);
-
-            return redirect('/admin/doctors/');
+      return redirect('/admin/doctors/');
             // ->with("mssg", $Name." was deleted succesfuly.")->with("alerttype", "success");
     }
 }

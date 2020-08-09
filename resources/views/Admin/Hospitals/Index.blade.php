@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1>Products</h1>
+                <h1>Hospitals</h1>
                 <a class="text-right" href="/admin/hospitals/create">Create New Hospital</a>
             </div>
             <div class="col-md-12">

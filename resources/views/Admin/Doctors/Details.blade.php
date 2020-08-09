@@ -7,18 +7,16 @@
             <h1>Details</h1>
             <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Doctor Name: {{ $doctors->DoctorName }}</h5> 
-                        <li class="list-group-item "><b>Speciality: {{ $doctors->Speciality}}</b></li>
+                        <h5 class="card-title">Doctor Name: {{ $doctor->DoctorName }}</h5> 
+                        <li class="list-group-item "><b>Speciality: {{ $doctor->Speciality}}</b></li>
+                        <li class="list-group-item "> <b>MobileNumber: {{ $doctor->MobileNumber }} </b>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <b>MobileNumber: {{ $doctors->MobileNumber }} </b>
-                        </li>
-                        
-                    </ul>
+
+                   
+                    
                     <div class="card-body">
-                        <a href="/admin/doctors/edit/{{ $doctors->_id }}" class="card-link">Edit</a>
-                        <a href="/admin/doctors/delete/{{ $doctors->_id }}" class="card-link">Delete</a>
+                        <a href="/admin/doctors/edit/{{ $doctor->_id }}" class="card-link">Edit</a>
+                        <a href="/admin/doctors/delete/{{ $doctor->_id }}" class="card-link">Delete</a>
                         </div>
                 </div>
             </div>

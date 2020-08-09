@@ -29,6 +29,28 @@ Route::get('/hospitals', function () {
     return view('hospitals');
 });
 
+// Hospital Users
+Route::get('/hospital', 'HospitalsController@IndexHospital')->name('Hospitals Information');
+
+Route::get('/hospital/{id}', 'HospitalsController@HospitalDetails')->name('HospitalDetails');
+
+// Doctors Users
+Route::get('/doctors', 'DoctorsController@IndexDoctor')->name('Doctor Information');
+
+Route::get('/doctors/{id}', 'DoctorsController@DoctorDetails')->name('DoctorDetails');
+
+// Drugs Users
+Route::get('/drugs', 'DrugsController@IndexDrugs')->name('Drug Information');
+
+Route::get('/drugs/{id}', 'DrugsController@DrugDetails')->name('DrugDetails');
+
+// Patients Users
+Route::get('/patients', 'PatientsController@IndexPatient')->name('Patient Information');
+
+Route::get('/patients/{id}', 'PatientsController@PatientDetails')->name('PatientDetails');
+
+
+
 //Admin
 
 Route::GET('/admin/hospitals', 'HospitalsController@Index');
@@ -69,7 +91,7 @@ Route::get('/admin/drugs', 'DrugsController@Index');
 
 Route::get('/admin/drugs/create', 'DrugsController@Create');
 
-Route::post('/admin/drugs/create', 'DrugsController@Doctor');
+Route::post('/admin/drugs/create', 'DrugsController@Drug');
 
 Route::get('/admin/drugs/edit/{id}', 'DrugsController@Edit');
 
@@ -80,6 +102,23 @@ Route::get('/admin/drugs/delete/{id}', 'DrugsController@Delete');
 Route::delete('/admin/drugs/delete', 'DrugsController@Remove');
 
 Route::get('/admin/drugs/details/{id}', 'DrugsController@Show');
+
+//Admin Patients
+Route::get('/admin/patients', 'PatientsController@Index');
+
+Route::get('/admin/patients/create', 'PatientsController@Create');
+
+Route::post('/admin/patients/create', 'PatientsController@Patient');
+
+Route::get('/admin/patients/edit/{id}', 'PatientsController@Edit');
+
+Route::post('/admin/patients/edit', 'PatientsController@Update');
+
+Route::get('/admin/patients/delete/{id}', 'PatientsController@Delete');
+
+Route::delete('/admin/patients/delete', 'PatientsController@Remove');
+
+Route::get('/admin/patients/details/{id}', 'PatientsController@Show');
 
 
 Route::get('/hospitals/index', 'HomeController@index');

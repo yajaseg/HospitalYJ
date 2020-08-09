@@ -7,6 +7,23 @@ use MongoDB;
 
 class DrugsController extends Controller
 {
+    
+    public function IndexDrugs() {
+        $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
+        $drugCount = $collection->count();
+        $page = request("pg") == 0 ? 1 : request("pg");
+        $drugs = $collection->find([], [ "limit" => 12, "skip" => ($page - 1) * 12 ]);
+        return view('Drugs.Index', [ "drugs" => $drugs, "drugCount" => $drugCount ]);
+    }
+
+
+    public function HospitalDetails($id) {
+        $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
+        $drugs = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
+        return view("Drugs.Details", ["drugs" => $drugs]);
+    }
+    
+    
     public function Index(){
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
         $drugs = $collection->find();
@@ -15,18 +32,18 @@ class DrugsController extends Controller
 
     public function Create() { 
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
-        $hospital = $collection->find();
-        return view('Admin.Drugs.Create', ["hospital" => $hospital ]);  
+        $drugs = $collection->find();
+        return view('Admin.Drugs.Create', ["drugs" => $drugs ]);  
     }
     
     public function Drug() {
         $drugs = [
-            "TradeName" => request("Trade Name"),
+            "TradeName" => request("TradeName"),
             "Price" => request("Price"),
           
            
         ];
-        $collection = (new MongoDB\Client)->fiveCStore->Drugs;
+        $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
         $insertOneResult = $collection->insertOne($drugs);
         if ($insertOneResult->getInsertedCount() == 1) 
             return redirect('/admin/drugs')->with('mssg', request('Trade Name')." was added succesfuly.")->with('alerttype', "success");
@@ -35,7 +52,7 @@ class DrugsController extends Controller
 
     public function Edit($id) { 
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
-        $drugs = $collection->findOne(["_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        $drugs = $collection->findOne(["_id" => new MongoDB\BSON\ObjectId($id) ]);
         return view('Admin.Drugs.edit', ["drugs" => $drugs]);
     }
     
@@ -43,19 +60,19 @@ class DrugsController extends Controller
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
         $drugs = [
             
-            "Name" => request("Name"),
-            "Address" => request("Address"),
-            "Phone_Number" => request("Phone_Number"),
-            "DoctorName" =>request("DoctorName")
+            "TradeName" => request("TradeName"),
+            "Price" => request("Price"),
+          
         ];
         $updateOneResult = $collection->updateOne([
-            "_id" => new MongoDB\BSON\ObjectId(request("hospitalid"))
+            "_id" => new MongoDB\BSON\ObjectId(request("drugid"))
         ],[
             '$set' => $drugs
         ]);
-        if($updateOneResult->getModifiedCount()==1)
-        return redirect("/admin/drugs/".request("drugid"))->with('mssg', "Updated succesfuly")->with("alerttype", "success");
+      
+        return redirect('/admin/drugs/');
         }
+
     public function ProductDetails($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
         $drugs = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
@@ -64,13 +81,13 @@ class DrugsController extends Controller
 
     public function Show($id) { //Details
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
-        $drugs = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        $drugs = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
         return view('Admin.Drugs.details', [ "drugs" => $drugs]);
     }
 
     public function Delete($id) {
         $collection = (new MongoDB\Client)->HospitalYJ->Drugs;
-        $drugs = $collection->findOne([ "_id" => new \MongoDB\BSON\ObjectId($id) ]);
+        $drugs = $collection->findOne([ "_id" => new MongoDB\BSON\ObjectId($id) ]);
         return view('Admin.Drugs.delete', [ "drugs" => $drugs]);
     }
 

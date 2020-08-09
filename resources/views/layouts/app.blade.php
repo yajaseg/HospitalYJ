@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Hospital YJ') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -33,21 +33,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="/admin/hospitals" class="nav-link">Hospitals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/doctors" class="nav-link">Doctors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/drugs" class="nav-link">Drugs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/patients" class="nav-link">Patients</a>
-                        </li>
+                    <a class="nav-link" href="/hospital">Hospital</a>
+                            <a class="nav-link" href="/doctors">Doctors</a>
+                            <a class="nav-link" href="/patients">Patients</a>
+                            <a class="nav-link" href="/drugs">Drugs</a>
+ 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="/admin/hospitals">Hospital</a>
+                                <a class="dropdown-item" href="/admin/doctors" >Doctors</a>
+                                <a class="dropdown-item" href="/admin/drugs">Drugs</a>
+                                <a class="dropdown-item" href="/admin/patients">Patients</a>
+                            </div>
+                        </div>
+                    </ul>
+
+
+
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest

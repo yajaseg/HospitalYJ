@@ -21,7 +21,7 @@
                <div class="row">
                   <div class="form-group col-md-6">
                         <label for="PhoneNumber">Phone Number</label>
-                        <input type="tel" class="form-control" id="PhoneNumber name="PhoneNumber">
+                        <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber">
                   </div>
                   <div class="form-group col-md-6">
                         <label for="DoctorName">Doctor Name</label>

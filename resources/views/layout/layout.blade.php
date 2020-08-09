@@ -18,15 +18,9 @@
     <ul class="navbar-nav mr-auto">
     <li class="nav-item">
         <a class="nav-link" href="/hospitals/index">Hospitals </a>
-
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/hospitals">Hospitals </a>
-
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/hospitals">AdminHospitals </a>
-
+        <a class="nav-link" href="/doctors/index">Doctor </a>
+        <a class="nav-link" href="/patients/index">AdminHospitals </a>
+        <a class="nav-link" href="/drugs/index">Drugs </a>
       </li>
     </ul>
   </div>

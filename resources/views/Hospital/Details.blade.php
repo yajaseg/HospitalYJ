@@ -5,7 +5,7 @@
         <div class="row">
             <div class="card col-md-12">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $hospital->Name }}</h5>
+                    <h5 class="card-title">{{ $hospitals->Name }}</h5>
                     
                 </div>
                 <div id="starRating" class="card-footer">
@@ -26,7 +26,7 @@
                         <i class="far fa-star" onclick="setStarRating(10)" onmouseleave="starRating(document.getElementById('ratingval').value);" onmouseover="starRating(10);"></i>
                     </span>
                     @php
-                        $rating = (array)$product->rating;
+                        $rating = (array)$hospitals->rating;
                         if (count($rating) == 0)
                             $avg = 0;
                         else
@@ -38,13 +38,10 @@
             </div>
             <div class="col-md-12">
                 <h1>Add a Comment</h1>
-                <form action="{{ route('ProductComment') }}" method="POST">
+                <form action="{{ route('HospitalComment') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="productid" id="productid" value="{{ $product->_id->__toString() }}">
-                    <div class="form-group">
-                        <label for="userid">User ID</label>
-                        <input class="form-control" type="text" name="userid" id="userid">
-                    </div>
+                    <input type="hidden" name="hospitalid" id="hospitalid" value="{{ $hospitals->_id->__toString() }}">
+                    
                     <div class="form-group">
                         <label for="comment">Comment</label>
                         <textarea class="form-control" name="comment" id="comment" cols="30" rows="4"></textarea>
@@ -54,13 +51,13 @@
             </div>
             <div class="col-md-12">
                 <h1>User comments</h1>
-                @if (count($product->comments) == 0 || $product->comments == null || empty($product->comments) )
+                @if (count($hospital->comments) == 0 || $hospital->comments == null || empty($hospital->comments) )
                         <h1>No comments yet.</h1>
                 @else
-                    @foreach($product->comments as $comment)
+                    @foreach($hospital->comments as $comment)
                     <div class="card col-md-12">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $comment->user_id }}</h4>
+                           
                             <p class="card-text">{{ $comment->comment }}</p>
                             <p class="card-text">Date published: {{ $comment->date }} UTC</p>
                         </div>

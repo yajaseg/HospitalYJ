@@ -11,16 +11,16 @@
 
 
 //Create Functions
- $collection = (new MongoDB\Client)->HospitalYJ->Hospital;
- $insertResult = $collection->insertOne([
+//  $collection = (new MongoDB\Client)->HospitalYJ->Hospitals;
+//  $insertResult = $collection->insertOne([
     
-     "Name" => "Holis",
-     "Address" => "Address",
-     "PhoneNumber" => "PhoneNumber",
-     "DoctorName" =>"DoctorName" ]);
+//      "Name" => "Holis",
+//      "Address" => "Address",
+//      "PhoneNumber" => "PhoneNumber",
+//      "DoctorName" =>"DoctorName" ]);
 
-      printf("inserted %d document(s)<br />", $insertResult->getInsertedCount());
-    var_dump($insertResult->getInsertedID());
+//       printf("inserted %d document(s)<br />", $insertResult->getInsertedCount());
+//     var_dump($insertResult->getInsertedID());
 
 //Read Function
 // $table = $collection->find();
